@@ -49,8 +49,8 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|references :user|integer|foreign_key: true|
-|references :group|integer|foreign_key: true|
+|user|references|index: true, foreign_key: true|
+|group|references|index: true, foreign_key: true|
 
 ### Association
 - belongs_to :group
