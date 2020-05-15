@@ -26,10 +26,8 @@ Things you may want to cover:
 ## usersテーブル
 |Column|Type|Options|
 |------|----|-------|
-|name|string|null: false|
-|email|string|null: false|
-|password|string|null: false|
-|group_id|integer|null: false, foreign_key: true|
+|name|string|null: false, unique: true|
+|email|string|null: false, unique: true|
 
 ### Association
 - has_many :messages
