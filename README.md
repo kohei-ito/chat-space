@@ -62,8 +62,8 @@ Things you may want to cover:
 |------|----|-------|
 |body|text|
 |image|string|
-|references :group|integer|foreign_key: true|
-|references :user|integer|foreign_key: true|
+|group|references|index: true, foreign_key: true|
+|user|references|index: true, foreign_key: true|
 
 ### Association
 - belongs_to :group
