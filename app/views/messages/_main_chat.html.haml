@@ -1,0 +1,39 @@
+.main
+  .main__top
+    .main__top__group-info
+      .main__top__group-info__name
+        aaa
+      .main__top__group-info__member-list
+        member：
+        .main__top__group-info__member-list__member
+          kohei
+    = link_to "#", class:"main__top__edit-btn" do
+      Edit
+
+  .main__message-field
+    .main__message-field__message
+      .main__message-field__message__info
+        .main__message-field__message__info__name
+          kohei
+        .main__message-field__message__info__date
+          2020/05/26(tue) 14:10
+      .main__message-field__message__box
+        こんにちは
+    .main__message-field__message
+      .main__message-field__message__info
+        .main__message-field__message__info__name
+          kohei
+        .main__message-field__message__info__date
+          2020/05/26(tue) 14:10
+      .main__message-field__message__box
+        こんにちは
+        
+  .main__bottom
+    %form.main__bottom__form
+      .main__bottom__form__contents
+        %input{ type: "text", placeholder: "type a message", class: "main__bottom__form__contents__text"}
+        %label{ class: "main__bottom__form__contents__image"}
+          = icon('far', 'image')
+          %input{ type: "file", class: "main__bottom__form__contents__image__file"}
+      %input{ type: "submit", value:"Send", class: "main__bottom__form__send-btn" }
+        
