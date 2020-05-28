@@ -2,38 +2,22 @@
   .main__top
     .main__top__group-info
       .main__top__group-info__name
-        aaa
+        = @group.name
       .main__top__group-info__member-list
         member：
         .main__top__group-info__member-list__member
-          kohei
-    = link_to "#", class:"main__top__edit-btn" do
+          - @group.users.each do |user|
+            = user.name
+    = link_to edit_group_path(@group), class:"main__top__edit-btn" do
       Edit
-
   .main__message-field
-    .main__message-field__message
-      .main__message-field__message__info
-        .main__message-field__message__info__name
-          kohei
-        .main__message-field__message__info__date
-          2020/05/26(tue) 14:10
-      .main__message-field__message__box
-        こんにちは
-    .main__message-field__message
-      .main__message-field__message__info
-        .main__message-field__message__info__name
-          kohei
-        .main__message-field__message__info__date
-          2020/05/26(tue) 14:10
-      .main__message-field__message__box
-        こんにちは
+    = render @messages
         
   .main__bottom
-    %form.main__bottom__form
+    = form_with model: [@group, @message], html: {class: "main__bottom__form"}, local: true do |f|
       .main__bottom__form__contents
-        %input{ type: "text", placeholder: "type a message", class: "main__bottom__form__contents__text"}
-        %label{ class: "main__bottom__form__contents__image"}
-          = icon('far', 'image')
-          %input{ type: "file", class: "main__bottom__form__contents__image__file"}
-      %input{ type: "submit", value:"Send", class: "main__bottom__form__send-btn" }
-        
+        = f.text_field :content, class: 'main__bottom__form__contents__text', placeholder: 'type a message'
+        = f.label :image, class: 'main__bottom__form__contents__image' do
+          = icon('far', 'image', class: 'Form__icon')
+          = f.file_field :image, class: 'main__bottom__form__contents__image__file'
+      = f.submit 'Send', class: 'main__bottom__form__send-btn'
