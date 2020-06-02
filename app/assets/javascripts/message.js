@@ -37,13 +37,13 @@ $(function(){
       let html = buildHTML(data);
       $('.main__message-field').append(html);      
       $('.main__message-field').animate({ scrollTop: $('.main__message-field')[0].scrollHeight});
-      $('form')[0].reset();
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
     })
     .always(function() {
       $(".main__bottom__form__send-btn").prop('disabled', false);
+      $('form')[0].reset();
     });
   });
 });
