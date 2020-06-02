@@ -1,6 +1,6 @@
 $(function(){
   function buildHTML(message){
-    if ( message.image ) {
+    var messageImage = (message.image)? `<img src= "${message.image}" class="Message__image">`:`` 
       let html =
         `<div class="main__message-field__message">
           <div class="main__message-field__message__info">
@@ -15,30 +15,11 @@ $(function(){
             <p class="main__message-field__message__box__content">
               ${message.content}
             </p>
-            <img class="Message__image" src="${message.image}">
+            ${messageImage}
           </div>
         </div>`
       return html;
-    } else {
-      let html =
-      `<div class="main__message-field__message">
-        <div class="main__message-field__message__info">
-          <div class="main__message-field__message__info__name">
-            ${message.user_name}
-          </div>
-          <div class="main__message-field__message__info__date">
-            ${message.created_at}
-          </div>
-        </div>
-        <div class="main__message-field__message__box">
-          <p class="main__message-field__message__box__content">
-            ${message.content}
-          </p>
-        </div>
-      </div>`
-      return html;
-    };
-  }
+    }
 
   $('.main__bottom__form').on('submit', function(e){
     e.preventDefault();
@@ -57,10 +38,11 @@ $(function(){
       $('.main__message-field').append(html);      
       $('.main__message-field').animate({ scrollTop: $('.main__message-field')[0].scrollHeight});
       $('form')[0].reset();
-      $(".main__bottom__form__send-btn").prop('disabled', false);
     })
     .fail(function() {
       alert("メッセージ送信に失敗しました");
+    })
+    .always(function() {
       $(".main__bottom__form__send-btn").prop('disabled', false);
     });
   });
