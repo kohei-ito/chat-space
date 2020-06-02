@@ -48,6 +48,10 @@
     background-color: #2f3e51;
     &__group {
       padding: 20px 0px 40px;
+      a {
+        color: white;
+        text-decoration: none;
+      }
       &__name {
         font-size: 15px;
       }
